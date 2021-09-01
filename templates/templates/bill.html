@@ -1,0 +1,13 @@
+<html>
+  <head> </head>
+  <body>
+    <form action="bill_generate" method="POST">
+      {%csrf_token%}
+      <input name="reg" type="text" placeholder="Registration No." />
+      <input type="submit" value="Generate Bill"</input>
+    </form>
+    {% if mess %}
+    {{mess}}
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>
+abc</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;  
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+td,th{
+    border:2px solid blue;
+    padding:7px;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  background:black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.hide{
+    display:none;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">Master
+    </button>
+    <div class="dropdown-content">
+      <a href="category">Room Category</a>
+      <a href="room_master">Room Master</a>
+      <a href="#">Service Master</a>
+    </div>
+  </div>
+
+    <div class="dropdown">
+    <button class="dropbtn">Transaction
+    </button>
+    <div class="dropdown-content">
+      <a href="checkin">Check in</a>
+      <a href="checkout">check out</a>
+      <a href="#">Room Service</a>
+    </div>
+  </div>
+
+  <a href="logoutt">Logout</a> 
+</div>
+
+
+<br><br>
+<form method='POST' action='save2'>
+
+{% csrf_token %}
+<input class='dis' id="ch" type='text' placeholder='Room No' name='room_no' disabled required onfocusout="checking()"></input>
+<select class='dis' name='status' disabled required>
+<option value='' disabled selected>Status</option>
+<option value='0'>Vacant</option>
+<option value='1'>Occupied</option>
+</select>
+<input class='dis' type='text' placeholder='capacity' name='capacity' required disabled></input>
+<select class='dis' name='roomcat' disabled required>
+<option value='' disabled selected>Select Category</option>
+{% for val in data %}
+<option value={{val}}>{{val}}</option> 
+{% endfor %}  
+</select>
+<input id='add' type='button' value='Add' onclick='unhide()'></input> 
+<input type='reset' value='clear'></input>
+<input type='submit' value='save'></input>  
+<input type='button' value='Delete' onclick="show()"></input> 
+</form>
+
+<form method='POST' action='delete'>
+
+{% csrf_token %}
+{%if elements%}
+<table style="padding:10px; border:2px solid black;">
+<tr>
+<th>Room Number</th>
+<th>Status</th>
+<th>Capacity</th>
+<th>Category</th>
+<th class="hide">Select</th>
+</tr>
+{% for ele in elements %}
+<tr>
+<td class="checking">{{ele.room_no}}</td>
+<td>{{ele.status}}</td>
+<td>{{ele.capacity}}</td>
+<td>{{ele.room_cat}}</td>
+<td class="hide"><input type="checkbox" name="check[]" value={{ele.room_no}}></input></td>
+</tr>
+{% endfor %}
+</table>
+{%endif%}
+<br>
+<input class="hide" type="submit" value="Delete"/>
+</form>
+
+<script> 
+    function unhide()
+    {
+        var disabled=document.getElementsByClassName('dis');
+        for(var i=0;i<disabled.length;i++)
+        {
+            disabled[i].disabled=false;
+        }
+    }
+    function show()
+{
+   var coll =  document.getElementsByClassName('hide');
+   for(var i=0; i<coll.length; i++)
+    {
+        coll[i].style.display = "block";
+    }
+}
+
+function checking()
+{
+  var tocheck=document.getElementById('ch').value;
+  
+  var a = document.getElementsByClassName('checking');
+  for(var i=0;i<a.length;i++)
+  {
+    if(a[i].innerHTML==tocheck)
+    {
+      alert('Category Code Already Exist')
+      document.getElementById('ch').value='';
+      document.getElementById('ch').focus();
+      break;
+    }
+  }
+  
+}
+ </script>
+</body>
+</html>

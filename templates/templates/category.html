@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Otomanopee+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Krona+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      
+      flex-wrap: wrap;
+
+    }
+    .alg{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      
+    }
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      flex-wrap: wrap;
+      display: flex;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    td,
+    th {
+      border: 2px solid blue;
+      padding: 7px;
+      flex-wrap: wrap;
+     
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: white;
+      background: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    .head {
+      font-family: 'Lobster', cursive;
+      /* margin-left: 300px; */
+      font-size: 80px;
+      font-weight: 900px;
+      color: #578734;
+      flex-wrap: wrap;
+    }
+
+    .record{
+      font-family: 'Dancing Script', cursive;
+      /* margin-left: 300px; */
+      font-size: 50px;
+      font-weight: 700px;
+      color: blue;
+      flex-wrap: wrap;
+    }
+
+    .dis {
+      /* margin-left: 50rem;
+      margin-radius: 100px; */
+      height: 30px;
+      width: 350px;
+      border: 5px solid #BAFC8A;
+      font-size: large;
+      color: green;
+      
+      flex-wrap: wrap;
+    }
+
+    .btn1 {
+      /* margin-left: 810px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+
+    }
+
+    .btn2 {
+      /* margin-left: 2px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+
+    }
+
+    .btn3 {
+      /* margin-left: 2px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+
+    }
+
+    .btn4 {
+      /* margin-left: 2px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+    }
+
+      .btn1 :hover {
+        color: #C70039;
+        background-color: #C70039;
+
+      }
+  
+
+      .obj {
+        display: flex;
+        
+
+      }
+    
+      .label
+      {
+        color: red;
+        /* float:right; */
+        margin-left:50%;
+        font-size: 14px;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        
+      
+      font-family: 'Orbitron', sans-serif;
+      
+      }
+      .t{
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="dropdown">
+      <button class="dropbtn">Master
+      </button>
+      <div class="dropdown-content">
+        <a href="category">Room Category</a>
+        <a href="room_master">Room Master</a>
+        <a href="#">Service Master</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Transaction
+      </button>
+      <div class="dropdown-content">
+        <a href="checkin">Check in</a>
+        <a href="checkout">check out</a>
+        <a href="#">Room Service</a>
+      </div>
+    </div>
+    <a href="chart">Visual chart</a>
+    <a href="graph">Pie chart</a>
+    <a href="logoutt">Logout</a> 
+    <span class="label"><b>+ CITY HOSPITAL</b></span>
+
+  </div>
+
+  <div class="alg">
+   
+
+
+
+    <span class="obj">
+      <div>
+          <br><br>
+          <span class="head">Departments</span>
+          <br>
+          <form action="adding_data" method="POST">
+            {% csrf_token %}
+            <div class="inner">
+            <input class="dis"  name="code" id="ch" type="text" placeholder="Category code" required
+              onfocusout="checking()" name="code" disabled />
+            <br><br><input class="dis" name="desc" type="text" placeholder="Category Description" required name="code"
+              disabled />
+            <br><br><input class="dis" id="chk" onfocusout="number_checking()" name="rent" type="text"
+              placeholder="Charges" required name="code" disabled />
+            <br><br><input class="btn1" id="add" type="button" value="Add" />
+            <input class="btn2" type="reset"></input>
+            <input class="btn3" type="submit" value="Save"></input>
+            <input class="btn4" type="button" value="Delete" onclick="show()"></input>
+            <p id="information" style="color:red;"></p>
+            </div>
+          </form>
+      </div>
+ 
+    </span>
+
+
+    <span class="obj">
+      <br>
+      <br>
+      {% if info %}
+      <p style="color:blue;">{{info}}</p>
+      {% endif %}
+
+      {% if elements %}
+      <form action="del" method="post">
+        {% csrf_token %}
+        
+        <div>
+          <br>
+          <span class="record">Records</span>
+          <div class="t">
+          <table style="padding:10px; border:2px solid black;">
+            <tr>
+              <th>Category Code</th>
+              <th>Category Description</th>
+              <th>Charges</th>
+              <th class="hide">Select</th>
+            </tr>
+            {% for ele in elements %}
+            <tr>
+              <td class="checking">{{ele.category}}</td>
+              <td>{{ele.description}}</td>
+              <td>{{ele.rent}}</td>
+              <td class="hide"><input type="checkbox" name="check[]" value={{ele.category}}></input></td>
+            </tr>
+            {% endfor %}
+          </table>
+          </div>
+       </div>
+        <br>
+        <input class="hide" type="submit" value="Delete" />
+      </form>
+      {% endif %}
+    </span>
+</div>
+ 
+  <script>
+    function number_checking() {
+      var chk_no = document.getElementById('chk').value;
+      if (isNaN(chk_no)) {
+        alert('Enter a number in rent');
+        document.getElementById('chk').value = '';
+      }
+      else {
+
+      }
+    }
+    function checking() {
+      var tocheck = document.getElementById('ch').value;
+
+      var a = document.getElementsByClassName('checking');
+      for (var i = 0; i < a.length; i++) {
+        if (a[i].innerHTML == tocheck) {
+          alert('Category Code Already Exist')
+          document.getElementById('ch').value = '';
+          document.getElementById('ch').focus();
+          break;
+        }
+      }
+
+    }
+  </script>
+
+
+  <script>
+    document.getElementById('add').onclick = function () {
+      var disabled = document.getElementsByClassName('dis');
+      for (var i = 0; i < disabled.length; i++) {
+        disabled[i].disabled = false;
+      }
+
+    }
+    function show() {
+      var coll = document.getElementsByClassName('hide');
+      for (var i = 0; i < coll.length; i++) {
+        coll[i].style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+
+</html>
